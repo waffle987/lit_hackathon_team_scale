@@ -6,8 +6,8 @@ import 'package:lit_hackathon_team_scale/widgets/navigation_bar/navigation_bar.d
 import 'package:lit_hackathon_team_scale/widgets/navigation_drawer/navigation_drawer.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class UnAuthHomePage extends StatelessWidget {
+  const UnAuthHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
