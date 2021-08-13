@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class varController extends GetxController {
+class VarController extends GetxController {
   List<String> findVars(String block) {
     RegExp exp = RegExp(r"{{([(a-zA-Z)])\w+}}");
     List<String> listOfVars = [];
@@ -12,11 +12,12 @@ class varController extends GetxController {
     return listOfVars;
   }
 
-  replaceVars(List<String> replacements, String block) {
+  String replaceVars(List<String> replacements, String block) {
     for (String word in findVars(block)) {
       int index = findVars(block).indexOf(word);
       RegExp exp = RegExp(word, caseSensitive: false);
       block = block.replaceFirst(exp, replacements[index]);
     }
+    return block;
   }
 }
