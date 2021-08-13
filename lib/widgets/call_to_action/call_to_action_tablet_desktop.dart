@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CallToAction extends StatelessWidget {
+class CallToActionTabletDesktop extends StatelessWidget {
   final String title;
-  const CallToAction(this.title);
+  const CallToActionTabletDesktop(this.title);
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,9 @@ class CallToAction extends StatelessWidget {
         ),
       ),
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 31, 229, 146),
-          borderRadius: BorderRadius.circular(5)),
+        color: Color.fromARGB(255, 31, 229, 146),
+        borderRadius: BorderRadius.circular(5),
+      ),
     );
   }
 }

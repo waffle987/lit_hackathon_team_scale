@@ -34,4 +34,13 @@ class BlockAPI {
       }
     });
   }
+
+  void deleteBlock(Block block) {
+    _firestore
+        .collection('blocks')
+        .doc(block.id)
+        .delete()
+        .then((value) => print('Block deleted'))
+        .catchError((error) => print('Failed to delete block: $error'));
+  }
 }

@@ -12,6 +12,10 @@ class VarChangeController extends GetxController {
   univocalics, uniconsonantics etc.'''
       .obs;
 
+  void setText(String text) {
+    this.text.value = text;
+  }
+
   List<String> findVars(String block) {
     RegExp exp = RegExp(r"{{\w+}}");
     List<String> listOfVars = [];
@@ -25,16 +29,11 @@ class VarChangeController extends GetxController {
 
   void replaceVars(List<String> replacements) {
     List<String> vars = findVars(text.value);
-    print('replacements' + replacements.toString());
-    print('vars' + vars.toString());
+
     for (String word in vars) {
-      print('word' + word);
       int index = vars.indexOf(word);
-      print('index' + index.toString());
 
       if (replacements.asMap().containsKey(index) && replacements[0] != '') {
-        print('replacement' + replacements[index]);
-        print('var' + word);
         RegExp exp = RegExp(word);
         text.value =
             text.value.replaceFirst(exp, "{{" + replacements[index] + "}}");
