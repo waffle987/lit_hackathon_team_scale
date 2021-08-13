@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/models/user_model.dart';
-import 'package:lit_hackathon_team_scale/ui/home/auth_home_page.dart';
+import 'package:lit_hackathon_team_scale/ui/auth_home/auth_home_page.dart';
 import 'package:lit_hackathon_team_scale/ui/home/unauth_home_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/loading.dart';
 
@@ -27,9 +27,6 @@ class AuthController extends GetxController {
   Rxn<User> firebaseUser = Rxn<User>();
   Rxn<UserModel> firestoreUser = Rxn<UserModel>();
 
-  String _selectedRole = 'Select a Role';
-  String get selectedRole => _selectedRole;
-
   @override
   void onReady() async {
     /// Run every time auth state changes
@@ -45,11 +42,6 @@ class AuthController extends GetxController {
     emailTextController.dispose();
     passwordTextController.dispose();
     super.onClose();
-  }
-
-  void setSelectedRole(dynamic role) {
-    _selectedRole = role;
-    update();
   }
 
   void handleAuthChanged(_firebaseUser) async {
@@ -179,7 +171,6 @@ class AuthController extends GetxController {
           id: result.user!.uid,
           email: result.user!.email!,
           username: result.user!.email!,
-          userRole: _selectedRole,
           photoUrl: '',
           bio: 'Welcome to RoboDoc!',
         );

@@ -24,10 +24,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # State management
+  # Util dependencies
+  fluro: ^2.0.3
+
+  # State management dependencies
   get: ^4.3.8
 
-  # Firebase
+  # Firebase dependencies
   firebase_core: ^1.4.0
   firebase_auth: ^3.0.1
   cloud_firestore: ^2.4.0
@@ -35,6 +38,7 @@ dependencies:
   # UI dependencies
   responsive_builder: ^0.4.1
   font_awesome_flutter: ^9.1.0
+  bubble_tab_indicator: ^0.1.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
