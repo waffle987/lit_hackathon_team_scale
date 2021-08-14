@@ -155,44 +155,46 @@ class BankPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: _mediaQuery.size.height * 0.02),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: _bankController.transactionQuestionList.value!.length,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: ListTile(
-                leading: ElongatedButton(
-                  text: 'No',
-                  onPressed: () => Get.to(() => BankTextPage(
-                      blockId: _bankController
-                          .transactionQuestionList.value![index].noId)),
-                  buttonColour: Colors.red,
-                  textColour: Colors.white,
+          _bankController.transactionQuestionList.value == null
+              ? Container()
+              : ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount:
+                      _bankController.transactionQuestionList.value!.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    child: ListTile(
+                      leading: ElongatedButton(
+                        text: 'No',
+                        onPressed: () => Get.to(() => BankTextPage(
+                            blockId: _bankController
+                                .transactionQuestionList.value![index].noId)),
+                        buttonColour: Colors.red,
+                        textColour: Colors.white,
+                      ),
+                      title: Text(
+                        _bankController
+                            .transactionQuestionList.value![index].question,
+                        textAlign: TextAlign.center,
+                      ),
+                      trailing: ElongatedButton(
+                        text: 'Yes',
+                        onPressed: () => Get.to(() => BankTextPage(
+                            blockId: _bankController
+                                .transactionQuestionList.value![index].yesId)),
+                        buttonColour: Colors.green,
+                        textColour: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
-                title: Text(
-                  _bankController
-                      .transactionQuestionList.value![index].question,
-                  textAlign: TextAlign.center,
-                ),
-                trailing: ElongatedButton(
-                  text: 'Yes',
-                  onPressed: () => Get.to(() => BankTextPage(
-                      blockId: _bankController
-                          .transactionQuestionList.value![index].yesId)),
-                  buttonColour: Colors.green,
-                  textColour: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: _mediaQuery.size.height * 0.02),
           ElongatedButton(
-            text: 'Enter',
-            onPressed: () async {
-              await _varChangeController.createPDF();
+            text: 'Download PDF',
+            onPressed: () {
+              _varChangeController.createPDF();
             },
-            buttonColour: Colors.red,
+            buttonColour: Colors.green,
             textColour: Colors.white,
           ),
         ],
