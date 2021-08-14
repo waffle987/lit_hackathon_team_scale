@@ -23,18 +23,20 @@ class BankTextPage extends StatelessWidget {
 
     return Scaffold(
       body: CenteredView(
-        child: Obx(() => _bankController.currentBlock.value == null
-            ? Container()
-            : Column(
-                children: [
-                  Text(_bankController.currentBlock.value!.title),
-                  SizedBox(height: 20.0),
-                  Text(c.text.value),
-                  ListViewVariables(
-                    c.findVars(c.text.value),
-                  ),
-                ],
-              )),
+        child: Obx(
+          () => _bankController.currentBlock.value == null
+              ? Container()
+              : Column(
+                  children: [
+                    Text(_bankController.currentBlock.value!.title),
+                    SizedBox(height: 20.0),
+                    Text(c.text.value),
+                    ListViewVariables(
+                      c.findVars(c.text.value),
+                    ),
+                  ],
+                ),
+        ),
       ),
     );
   }
