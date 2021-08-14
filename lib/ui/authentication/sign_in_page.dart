@@ -7,7 +7,7 @@ import 'package:lit_hackathon_team_scale/ui/authentication/reset_password_page.d
 import 'package:lit_hackathon_team_scale/ui/authentication/sign_up_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/busy_button.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';
-import 'package:lit_hackathon_team_scale/widgets/input_field.dart';
+import 'package:lit_hackathon_team_scale/widgets/input_fields/input_field.dart';
 import 'package:lit_hackathon_team_scale/widgets/text_link.dart';
 
 class SignInPage extends StatelessWidget {

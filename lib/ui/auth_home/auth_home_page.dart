@@ -45,6 +45,12 @@ class AuthHomePage extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          title: Text(
+            'RoboDoc',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           actions: [
             CircleButton(
               icon: FontAwesomeIcons.signOutAlt,

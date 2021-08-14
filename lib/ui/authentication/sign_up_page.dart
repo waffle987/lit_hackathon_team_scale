@@ -3,7 +3,7 @@ import 'package:lit_hackathon_team_scale/config/ui_helpers.dart';
 import 'package:lit_hackathon_team_scale/controllers/auth_controller.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/busy_button.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';
-import 'package:lit_hackathon_team_scale/widgets/input_field.dart';
+import 'package:lit_hackathon_team_scale/widgets/input_fields/input_field.dart';
 
 class SignUpPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
