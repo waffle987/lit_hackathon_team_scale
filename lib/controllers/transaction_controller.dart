@@ -7,12 +7,12 @@ import 'package:lit_hackathon_team_scale/models/Question.dart';
 import 'package:lit_hackathon_team_scale/models/transaction_model.dart';
 
 class TransactionController extends GetxController {
-  Rxn<List<Question>> selectedQuestions = Rxn<List<Question>>([]);
-  Rxn<List<Question>> allQuestions = Rxn<List<Question>>([]);
-  Rxn<List<TransactionModel>> trans = Rxn<List<TransactionModel>>([]);
-
+  Rx<List<Question>> selectedQuestions = new Rx<List<Question>>([]);
   final TextEditingController nameTextController = TextEditingController();
   final TextEditingController bodyTextController = TextEditingController();
+  Rx<List<Question>> allQuestions = new Rx<List<Question>>([]);
+  Rx<List<TransactionModel>> trans = new Rx<List<TransactionModel>>([]);
+
   @override
   void onReady() async {
     super.onReady();
@@ -21,8 +21,6 @@ class TransactionController extends GetxController {
   void onInit() {
     allQuestions.bindStream(getQuestions());
     trans.bindStream(getTransactions());
-
-    super.onInit();
   }
 
   @override
@@ -55,9 +53,9 @@ class TransactionController extends GetxController {
 
   void removeQuestion(String id) {
     var i = 0;
-    for (Question q in selectedQuestions.value!) {
+    for (Question q in selectedQuestions.value) {
       if (q.id == id) {
-        selectedQuestions.value!.removeAt(i);
+        selectedQuestions.value.removeAt(i);
         return;
       }
       i++;
@@ -66,11 +64,11 @@ class TransactionController extends GetxController {
 
   setTransaction() {
     Map<String, dynamic> dbQuestions = {};
-    for (Question q in selectedQuestions.value!) {
+    for (Question q in selectedQuestions.value) {
       dbQuestions[q.question] = [q.yesBlockId, q.noBlockId];
     }
     const id = 'wat'; //TODO: create identifier Ben
-    _firestore.collection('transaction').add({
+    _firestore.collection('transactions').add({
       'identifier': id,
       'name': nameTextController.text,
       'body': bodyTextController.text,
@@ -84,7 +82,7 @@ class TransactionController extends GetxController {
   }
 
   isSelected(Question q) {
-    for (Question sq in selectedQuestions.value!) {
+    for (Question sq in selectedQuestions.value) {
       if (sq.id == q.id) {
         return true;
       }
@@ -96,6 +94,7 @@ class TransactionController extends GetxController {
     return _firestore
         .collection('transactions')
         .where('user', isEqualTo: _auth.currentUser!.uid)
+        .orderBy('createdAt', descending: false)
         .snapshots()
         .map((snap) {
       List<TransactionModel> retVal = [];

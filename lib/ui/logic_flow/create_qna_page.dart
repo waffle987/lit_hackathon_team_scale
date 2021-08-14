@@ -11,12 +11,12 @@ import 'package:lit_hackathon_team_scale/ui/blocks_page/blocks_page.dart';
 // ignore: must_be_immutable
 class QnAPage extends StatelessWidget {
   QnAPage({Key? key}) : super(key: key);
-  final QnAController c = Get.put(QnAController());
-  final BlockController c2 = Get.put(BlockController());
 
   @override
   Widget build(BuildContext context) {
     late TabController _tabController;
+    final QnAController c = Get.put(QnAController());
+    final BlockController c2 = Get.put(BlockController());
 
     final ThemeData _themeData = Theme.of(context);
     final MediaQueryData _mediaQuery = MediaQuery.of(context);
@@ -32,7 +32,6 @@ class QnAPage extends StatelessWidget {
               textEditingController: c.quesTextController,
               textInputType: TextInputType.text),
           SizedBox(height: _mediaQuery.size.height * 0.05),
-          //insert yes no
           Text("Assign Blocks",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
           SizedBox(height: _mediaQuery.size.height * 0.02),
@@ -97,7 +96,6 @@ class QnAPage extends StatelessWidget {
             buttonColour: _themeData.primaryColor,
             textColour: Colors.white,
           ),
-
           Expanded(
             child: (GetX<QnAController>(
                 init: Get.put(QnAController()),
