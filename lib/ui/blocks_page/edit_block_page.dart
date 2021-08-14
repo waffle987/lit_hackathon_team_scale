@@ -10,6 +10,7 @@ class EditBlockPage extends StatelessWidget {
   EditBlockPage({Key? key, required this.block}) : super(key: key);
   final BlockController c = Get.put(BlockController());
   late Block block;
+
   @override
   Widget build(BuildContext context) {
     final ThemeData _themeData = Theme.of(context);
@@ -36,9 +37,9 @@ class EditBlockPage extends StatelessWidget {
           ElongatedButton(
             text: 'Edit Block',
             onPressed: () {
-              if (c.titleTextController.text == "") {
+              if (c.editTitleTextController.text == "") {
                 print("input a title");
-              } else if (c.bodyTextController.text == "") {
+              } else if (c.editBodyTextController.text == "") {
                 print("input a body");
               } else {
                 c.updateBlock(block.id!);

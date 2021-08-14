@@ -4,14 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/models/Question.dart';
-import 'package:lit_hackathon_team_scale/models/transcation_model.dart';
+import 'package:lit_hackathon_team_scale/models/transaction_model.dart';
 
 class TransactionController extends GetxController {
-  final Rx<List<Question>> selectedQuestions = new Rx<List<Question>>([]);
+  Rx<List<Question>> selectedQuestions = new Rx<List<Question>>([]);
   final TextEditingController nameTextController = TextEditingController();
   final TextEditingController bodyTextController = TextEditingController();
-  final Rx<List<Question>> allQuestions = new Rx<List<Question>>([]);
-  final Rx<List<TransactionModel>> trans = new Rx<List<TransactionModel>>([]);
+  Rx<List<Question>> allQuestions = new Rx<List<Question>>([]);
+  Rx<List<TransactionModel>> trans = new Rx<List<TransactionModel>>([]);
+
   @override
   void onReady() async {
     super.onReady();
@@ -67,7 +68,7 @@ class TransactionController extends GetxController {
       dbQuestions[q.question] = [q.yesBlockId, q.noBlockId];
     }
     const id = 'wat'; //TODO: create identifier Ben
-    _firestore.collection('transaction').add({
+    _firestore.collection('transactions').add({
       'identifier': id,
       'name': nameTextController.text,
       'body': bodyTextController.text,

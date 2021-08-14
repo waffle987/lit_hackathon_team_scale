@@ -67,7 +67,6 @@ class CreateTransactionPage extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     itemCount: c.selectedQuestions.value.length,
                     itemBuilder: (_, index) {
-                      print("WAT THE FUCK");
                       return Card(
                           key: Key('$index'),
                           child: ListTile(
@@ -93,6 +92,8 @@ class CreateTransactionPage extends StatelessWidget {
                       final Question item =
                           c.selectedQuestions.value.removeAt(oldIndex);
                       c.selectedQuestions.value.insert(newIndex, item);
+                      c.selectedQuestions.refresh();
+                      c.allQuestions.refresh();
                     },
                   ),
                 )),
@@ -122,6 +123,7 @@ class CreateTransactionPage extends StatelessWidget {
                           onChanged: (bool? newVal) {
                             if (newVal!) {
                               List<Question> selQ = c.selectedQuestions.value;
+                              print(selQ.asMap.toString());
                               if (selQ.asMap().containsKey(index)) {
                                 c.selectedQuestions.value.removeAt(index);
                                 c.selectedQuestions.value
@@ -131,10 +133,8 @@ class CreateTransactionPage extends StatelessWidget {
                                     .insert(index, c.allQuestions.value[index]);
                               }
                             }
-                            print('selectd q ' +
-                                c.selectedQuestions.value.toString());
-                            print(c.selectedQuestions.value
-                                .contains(c.allQuestions.value[index]));
+                            c.selectedQuestions.refresh();
+                            c.allQuestions.refresh();
                           }),
                     );
                   },
