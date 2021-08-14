@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lit_hackathon_team_scale/controllers/var_change_controller.dart';
 import 'package:get/get.dart';
+import 'package:lit_hackathon_team_scale/controllers/var_change_controller.dart';
 
 class ListViewVariables extends StatelessWidget {
-  final VarChangeController c = Get.put(VarChangeController());
+  final VarChangeController c = Get.put(VarChangeController(blockId: ''));
 
   List<String> vars = [];
   ListViewVariables(this.vars);

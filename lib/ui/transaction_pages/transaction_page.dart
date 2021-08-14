@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lit_hackathon_team_scale/controllers/transaction_controller.dart';
 import 'package:lit_hackathon_team_scale/ui/transaction_pages/create_transaction_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/elongated_button.dart';
-import 'package:lit_hackathon_team_scale/controllers/transaction_controller.dart';
 
 class TransactionPage extends StatelessWidget {
   const TransactionPage({Key? key}) : super(key: key);

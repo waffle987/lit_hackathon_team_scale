@@ -1,9 +1,27 @@
 import 'package:get/get.dart';
+import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
 
 class VarChangeController extends GetxController {
+  static VarChangeController to = Get.find();
+  final String blockId;
+
   RxList<String> list = RxList<String>();
 
-  VarChangeController();
+  VarChangeController({required this.blockId});
+
+  /// GetX controllers
+  final BankController _bankController = BankController.to;
+
+  @override
+  void onInit() {
+    if (blockId != '') {
+      _bankController.getBlock(blockId: blockId);
+
+      setText(_bankController.currentBlock.value!.body);
+    }
+
+    super.onInit();
+  }
 
   final results = [''].obs;
   final text = '''can use it for many word games:
