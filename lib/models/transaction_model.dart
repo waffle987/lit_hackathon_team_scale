@@ -7,19 +7,21 @@ class TransactionModel {
   final Map<String, dynamic> questions;
   final Timestamp createdAt;
 
-  TransactionModel(
-      {required this.name,
-      required this.body,
-      required this.identifier,
-      required this.questions,
-      required this.createdAt});
+  TransactionModel({
+    required this.name,
+    required this.body,
+    required this.identifier,
+    required this.questions,
+    required this.createdAt,
+  });
 
   factory TransactionModel.fromDocument({required DocumentSnapshot doc}) {
     return TransactionModel(
-        name: doc['name'],
-        body: doc['body'],
-        identifier: doc['identifier'],
-        questions: doc['questions'],
-        createdAt: doc['createdAt']);
+      name: doc['name'],
+      body: doc['body'],
+      identifier: doc['identifier'],
+      questions: doc['questions'],
+      createdAt: doc['createdAt'],
+    );
   }
 }

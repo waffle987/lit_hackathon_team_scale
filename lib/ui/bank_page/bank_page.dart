@@ -106,8 +106,7 @@ class BankPage extends StatelessWidget {
           ElongatedButton(
             text: 'Enter',
             onPressed: () {
-              if (_identifierTextController.text.isNotEmpty &&
-                  _bankController.transaction.value != null) {
+              if (_identifierTextController.text.isNotEmpty) {
                 _bankController.getTransaction(
                     identifier: _identifierTextController.text);
 
@@ -138,7 +137,49 @@ class BankPage extends StatelessWidget {
     }
 
     Widget _buildTransactionPage() {
-      return Container();
+      return ListView(
+        children: [
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          Text(
+            _bankController.transaction.value!.name,
+            style: TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          Text(
+            _bankController.transaction.value!.body,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: _bankController.transactionQuestionList.value!.length,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: ListTile(
+                leading: ElongatedButton(
+                  text: 'No',
+                  onPressed: () {},
+                  buttonColour: Colors.red,
+                  textColour: Colors.white,
+                ),
+                title: Text(
+                  _bankController
+                      .transactionQuestionList.value![index].question,
+                  textAlign: TextAlign.center,
+                ),
+                trailing: ElongatedButton(
+                  text: 'Yes',
+                  onPressed: () {},
+                  buttonColour: Colors.green,
+                  textColour: Colors.white,
+                ),
+              ),
+            ),
+          )
+        ],
+      );
     }
 
     return Scaffold(
