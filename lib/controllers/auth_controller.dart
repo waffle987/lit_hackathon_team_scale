@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/models/user_model.dart';
 import 'package:lit_hackathon_team_scale/ui/auth_home/auth_home_page.dart';
-import 'package:lit_hackathon_team_scale/ui/home/unauth_home_page.dart';
+import 'package:lit_hackathon_team_scale/ui/unauth_home/unauth_home_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/loading.dart';
 
 class AuthController extends GetxController {

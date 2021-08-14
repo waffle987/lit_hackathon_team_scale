@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lit_hackathon_team_scale/ui/home/home_content/home_content_desktop.dart';
-import 'package:lit_hackathon_team_scale/ui/home/home_content/home_content_mobile.dart';
+import 'package:lit_hackathon_team_scale/ui/unauth_home/home_content/home_content_desktop.dart';
+import 'package:lit_hackathon_team_scale/ui/unauth_home/home_content/home_content_mobile.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';
 import 'package:lit_hackathon_team_scale/widgets/navigation_bar/navigation_bar.dart';
 import 'package:lit_hackathon_team_scale/widgets/navigation_drawer/navigation_drawer.dart';

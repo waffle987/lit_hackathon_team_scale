@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lit_hackathon_team_scale/ui/bank_page/bank_page.dart';
+import 'package:lit_hackathon_team_scale/ui/team_page/team_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/navigation_bar/nav_bar_item.dart';
 import 'package:lit_hackathon_team_scale/widgets/navigation_bar/nav_bar_logo.dart';
 
@@ -16,15 +19,16 @@ class NavigationBarTabletDesktop extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              NavBarItem('Law firms'),
-              SizedBox(
-                width: 60,
+              const SizedBox(width: 60),
+              GestureDetector(
+                onTap: () => Get.to(() => BankPage()),
+                child: NavBarItem('Banks'),
               ),
-              NavBarItem('Banks'),
-              SizedBox(
-                width: 60,
+              const SizedBox(width: 60),
+              GestureDetector(
+                onTap: () => Get.to(() => TeamPage()),
+                child: NavBarItem('Team'),
               ),
-              NavBarItem('Team'),
             ],
           )
         ],

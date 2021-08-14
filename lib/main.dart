@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/controllers/auth_controller.dart';
-import 'package:lit_hackathon_team_scale/ui/auth_home/auth_home_page.dart';
+import 'package:lit_hackathon_team_scale/ui/unauth_home/unauth_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AuthHomePage(),
+      home: UnAuthHomePage(),
     );
   }
 }

@@ -7,10 +7,12 @@ class BlocksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData _themeData = Theme.of(context);
+    final MediaQueryData _mediaQuery = MediaQuery.of(context);
 
     return SingleChildScrollView(
       child: Column(
         children: [
+          SizedBox(height: _mediaQuery.size.height * 0.02),
           ElongatedButton(
             text: 'Create Block',
             onPressed: () {},
