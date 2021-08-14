@@ -28,7 +28,7 @@ class AuthHomePage extends StatelessWidget {
           indicatorRadius: 20.0,
           tabBarIndicatorSize: TabBarIndicatorSize.tab,
         ),
-        unselectedLabelColor: Colors.black,
+        unselectedLabelColor: Colors.white38,
         labelColor: Colors.white,
         unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         tabs: <Widget>[
