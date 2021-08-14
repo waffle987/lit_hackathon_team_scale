@@ -10,11 +10,6 @@ class HomeContentDesktop extends StatelessWidget {
     return Row(
       children: <Widget>[
         HomeDetails(),
-        Expanded(
-          child: Center(
-            child: CallToAction('Login'),
-          ),
-        )
       ],
     );
   }

@@ -4,6 +4,7 @@ import 'package:lit_hackathon_team_scale/ui/bank_page/bank_page.dart';
 import 'package:lit_hackathon_team_scale/ui/team_page/team_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/navigation_bar/nav_bar_item.dart';
 import 'package:lit_hackathon_team_scale/widgets/navigation_bar/nav_bar_logo.dart';
+import 'package:lit_hackathon_team_scale/ui/authentication/sign_in_page.dart';
 
 class NavigationBarTabletDesktop extends StatelessWidget {
   const NavigationBarTabletDesktop({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class NavigationBarTabletDesktop extends StatelessWidget {
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           NavBarLogo(),
           Row(
@@ -28,6 +30,11 @@ class NavigationBarTabletDesktop extends StatelessWidget {
               GestureDetector(
                 onTap: () => Get.to(() => TeamPage()),
                 child: NavBarItem('Team'),
+              ),
+              const SizedBox(width: 60),
+              GestureDetector(
+                onTap: () => Get.to(() => SignInPage()),
+                child: NavBarItem('Log In'),
               ),
             ],
           )

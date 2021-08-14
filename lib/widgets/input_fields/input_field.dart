@@ -29,10 +29,10 @@ class InputField extends StatelessWidget {
 
     return TextField(
       controller: controller,
-      style: TextStyle(height: 1),
+      style: TextStyle(height: 1, color: Colors.black),
       obscureText: password,
       decoration: InputDecoration(
-        hintText: placeholder,
+        hintText: placeholder,hintStyle: TextStyle(color: Colors.black),
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         filled: true,
