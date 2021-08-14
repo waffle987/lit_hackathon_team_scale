@@ -20,18 +20,37 @@ class UnAuthHomePage extends StatelessWidget {
         drawer: sizingInformation.deviceScreenType == DeviceScreenType.mobile
             ? NavigationDrawer()
             : null,
-        body: CenteredView(
-          child: Column(
+        body: Container(
+          decoration: const BoxDecoration(color: Colors.white),
+          child: Stack(
             children: [
-              Obx(() => Text(c.text.value)),
-              Obx(() => ListViewVariables(c.findVars(c.text.value))),
-              NavigationBar(),
-              Expanded(
-                child: ScreenTypeLayout(
-                  mobile: HomeContentMobile(),
-                  desktop: HomeContentDesktop(),
+              Positioned.fill(
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    Colors.grey,
+                    BlendMode.saturation,
+                  ),
+                  child: Image.asset(
+                    'background2.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              )
+              ),
+              CenteredView(
+                child: Column(
+                  children: [
+                    Obx(() => Text(c.text.value)),
+                    Obx(() => ListViewVariables(c.findVars(c.text.value))),
+                    NavigationBar(),
+                    Expanded(
+                      child: ScreenTypeLayout(
+                        mobile: HomeContentMobile(),
+                        desktop: HomeContentDesktop(),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
