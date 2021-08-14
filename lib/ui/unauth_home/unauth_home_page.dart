@@ -23,11 +23,11 @@ class UnAuthHomePage extends StatelessWidget {
               Positioned.fill(
                 child: ColorFiltered(
                   colorFilter: ColorFilter.mode(
-                    Colors.grey,
+                    Colors.grey.shade900,
                     BlendMode.saturation,
                   ),
                   child: Image.asset(
-                    'background2.png',
+                    'background3.jpg',
                     fit: BoxFit.fill,
                   ),
                 ),

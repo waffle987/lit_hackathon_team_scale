@@ -10,7 +10,7 @@ class HomeDetails extends StatelessWidget {
       var textAlignment =
           sizingInformation.deviceScreenType == DeviceScreenType.Desktop
               ? TextAlign.left
-              : TextAlign.center;
+              : TextAlign.left;
 
       double titleSize =
           sizingInformation.deviceScreenType == DeviceScreenType.Mobile
@@ -29,7 +29,7 @@ class HomeDetails extends StatelessWidget {
             Text(
               'FEE LETTERS\nAUTOMATED',
               style: TextStyle(
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w900,
                 height: 0.9,
                 fontSize: titleSize,
               ),
@@ -42,6 +42,7 @@ class HomeDetails extends StatelessWidget {
               'This website helps to streamline the generation of fee letters for Debt Capital Market transactions',
               style: TextStyle(
                 fontSize: descriptionSize,
+                fontWeight: FontWeight.w300,
                 height: 1.7,
               ),
               textAlign: textAlignment,
