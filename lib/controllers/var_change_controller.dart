@@ -3,6 +3,8 @@ import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class VarChangeController extends GetxController {
   static VarChangeController to = Get.find();
@@ -51,8 +53,7 @@ class VarChangeController extends GetxController {
 
       if (replacements.asMap().containsKey(index) && replacements[0] != '') {
         RegExp exp = RegExp(word);
-        text.value =
-            text.value.replaceFirst(exp, "{{" + replacements[index] + "}}");
+        text.value = text.value.replaceFirst(exp, replacements[index]);
       }
     }
     text.value = text.value;
@@ -68,13 +69,16 @@ class VarChangeController extends GetxController {
 
   createPDF() async {
     final pdf = pw.Document();
+    final fontData = File('open-sans.ttf').readAsBytesSync();
+    final ttf = pw.Font.ttf(fontData.buffer.asByteData());
 
     pdf.addPage(pw.Page(
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.ListView.builder(
             itemBuilder: (_, index) {
-              return pw.Text(this.list[index]);
+              return pw.Text(this.list[index],
+                  style: pw.TextStyle(font: ttf, fontSize: 40));
             },
             itemCount: this.list.length,
           ); // Center

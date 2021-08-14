@@ -15,7 +15,6 @@ class ListViewVariables extends StatelessWidget {
           Text("Variable"),
           SizedBox(width: 50),
           Text("Value"),
-          Obx(() => Text(c.results.toString()))
         ]),
         ListView.builder(
           shrinkWrap: true,

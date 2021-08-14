@@ -29,6 +29,7 @@ class BankTextPage extends StatelessWidget {
                 children: [
                   Text(_bankController.currentBlock.value!.title),
                   SizedBox(height: 20.0),
+                  Text(c.text.value),
                   ListViewVariables(
                     c.findVars(c.text.value),
                   ),

@@ -189,6 +189,30 @@ class BankPage extends StatelessWidget {
                     ),
                   ),
                 ),
+          Obx(() {
+            return SizedBox(
+                height: _mediaQuery.size.height / 2,
+                child: _varChangeController.list.length == 0
+                    ? Container()
+                    : ListView.builder(
+                        itemCount: _varChangeController.list.length,
+                        itemBuilder: (_, index) {
+                          return ListTile(
+                              title: Text(
+                                _varChangeController.list[index],
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.0,
+                                ),
+                              ),
+                              leading: IconButton(
+                                  icon: Icon(Icons.delete,
+                                      color: Colors.redAccent),
+                                  onPressed: () {
+                                    _varChangeController.list.removeAt(index);
+                                  }));
+                        }));
+          }),
           ElongatedButton(
             text: 'Download PDF',
             onPressed: () {
