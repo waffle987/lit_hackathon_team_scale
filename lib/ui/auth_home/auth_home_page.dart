@@ -38,7 +38,7 @@ class AuthHomePage extends StatelessWidget {
           Tab(
             child: Text('Blocks'),
           ),
-          Tab(child: Text('QnA'))
+          Tab(child: Text('Questions'))
         ],
       );
     }

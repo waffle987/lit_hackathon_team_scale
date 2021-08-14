@@ -35,7 +35,7 @@ class CreateTransactionPage extends StatelessWidget {
               header: 'Identifier (For Bank Access)',
               hintText:
                   'Enter a code for the bank to use to access the document..',
-              textEditingController: _identifierTextController,
+              textEditingController: c.identifierTextController,
               textInputType: TextInputType.text,
             ),
             SizedBox(height: _mediaQuery.size.height * 0.02),
@@ -92,6 +92,11 @@ class CreateTransactionPage extends StatelessWidget {
                       final Question item =
                           c.selectedQuestions.value.removeAt(oldIndex);
                       c.selectedQuestions.value.insert(newIndex, item);
+                      final int rank = c.order.value.removeAt(oldIndex);
+                      print('rank' + rank.toString());
+                      c.order.value.insert(newIndex, rank);
+                      print('order' + c.order.toString());
+                      c.order.refresh();
                       c.selectedQuestions.refresh();
                       c.allQuestions.refresh();
                     },
@@ -128,9 +133,12 @@ class CreateTransactionPage extends StatelessWidget {
                                 c.selectedQuestions.value.removeAt(index);
                                 c.selectedQuestions.value
                                     .insert(index, c.allQuestions.value[index]);
+                                c.order.value.removeAt(index);
+                                c.order.value.insert(index, index);
                               } else {
                                 c.selectedQuestions.value
                                     .insert(index, c.allQuestions.value[index]);
+                                c.order.value.insert(index, index);
                               }
                             }
                             c.selectedQuestions.refresh();
@@ -140,17 +148,20 @@ class CreateTransactionPage extends StatelessWidget {
                   },
                 ))),
             ElongatedButton(
-              text: 'Create Block',
+              text: 'Create Transaction',
               onPressed: () {
                 if (c.nameTextController.text == "") {
                   print("input a title");
                 } else if (c.bodyTextController.text == "") {
                   print("input a body");
+                } else if (c.identifierTextController == "") {
+                  print("input a identifier");
                 } else {
                   c.setTransaction();
                   c.nameTextController.text = '';
                   c.bodyTextController.text = '';
                   c.selectedQuestions.value = [];
+                  c.order.value = [];
                   Get.back();
                 }
               },

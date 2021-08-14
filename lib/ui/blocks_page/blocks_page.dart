@@ -27,7 +27,7 @@ class BlocksPage extends StatelessWidget {
           SizedBox(height: _mediaQuery.size.height * 0.02),
           CustomTextFormField(
               header: "Body (Wrap your variables with {{ }})",
-              hintText: 'Write here...',
+              hintText: 'e.g. Bob is {{variable_1}}...',
               textEditingController: c.bodyTextController,
               textInputType: TextInputType.multiline),
           SizedBox(height: _mediaQuery.size.height * 0.05),
@@ -48,7 +48,13 @@ class BlocksPage extends StatelessWidget {
             textColour: Colors.white,
           ),
           SizedBox(height: _mediaQuery.size.height * 0.05),
-          Text("Blocks"),
+          Text(
+            'Blocks',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
           SizedBox(height: _mediaQuery.size.height * 0.05),
           GetX<BlockController>(
               init: Get.put(BlockController()),

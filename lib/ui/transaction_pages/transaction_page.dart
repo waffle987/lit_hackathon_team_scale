@@ -11,7 +11,7 @@ class TransactionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData _themeData = Theme.of(context);
     final MediaQueryData _mediaQuery = MediaQuery.of(context);
-
+    final TransactionController c = Get.put(TransactionController());
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -22,53 +22,51 @@ class TransactionPage extends StatelessWidget {
             buttonColour: _themeData.primaryColor,
             textColour: Colors.white,
           ),
-          SizedBox(
-            height: 200,
-            child: (GetX<TransactionController>(
-                init: Get.put(TransactionController()),
-                builder: (TransactionController c) {
-                  if (c.trans.value.length != 0) {
-                    return Container(
-                        height: _mediaQuery.size.height,
-                        child: ListView.builder(
-                          padding: const EdgeInsets.all(10),
-                          itemCount: c.trans.value.length,
-                          itemBuilder: (_, index) {
-                            return Card(
-                                key: Key('$index'),
-                                child: ListTile(
-                                    title: Text(c.trans.value[index].name),
-                                    subtitle: Text(c.trans.value[index].body),
-                                    leading: Expanded(
-                                      child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            IconButton(
-                                                icon: new Icon(Icons.edit,
-                                                    color: Colors.blueAccent),
-                                                onPressed: () {
-                                                  // Get.to(() => EditBlockPage(
-                                                  //     block: c.blockList
-                                                  //         .value[index]));
-                                                  //TODO: Edit Question page
-                                                }),
-                                            IconButton(
-                                                icon: new Icon(Icons.delete,
-                                                    color: Colors.redAccent),
-                                                onPressed: () {
-                                                  //TODO: Create confirmation alert
-                                                  c.deleteTransaction(
-                                                      c.trans.value[index]);
-                                                }),
-                                          ]),
-                                    )));
-                          },
-                        ));
-                  } else {
-                    return Text('');
-                  }
-                })),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          Text(
+            'Transactions',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
           ),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          SizedBox(
+              height: _mediaQuery.size.height,
+              child: Obx(() => ListView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(10),
+                    itemCount: c.trans.value.length,
+                    itemBuilder: (_, index) {
+                      return Card(
+                          key: Key('$index'),
+                          child: ListTile(
+                            title: Text(c.trans.value[index].name),
+                            subtitle: Text(c.trans.value[index].body),
+                            leading: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  IconButton(
+                                      icon: new Icon(Icons.edit,
+                                          color: Colors.blueAccent),
+                                      onPressed: () {
+                                        // Get.to(() => EditBlockPage(
+                                        //     block: c.blockList
+                                        //         .value[index]));
+                                        //TODO: Edit Question page
+                                      }),
+                                  IconButton(
+                                      icon: new Icon(Icons.delete,
+                                          color: Colors.redAccent),
+                                      onPressed: () {
+                                        //TODO: Create confirmation alert
+                                        c.deleteTransaction(
+                                            c.trans.value[index]);
+                                      }),
+                                ]),
+                          ));
+                    },
+                  ))),
           SizedBox(height: _mediaQuery.size.height * 0.05)
         ],
       ),

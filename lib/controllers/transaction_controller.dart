@@ -10,8 +10,11 @@ class TransactionController extends GetxController {
   Rx<List<Question>> selectedQuestions = new Rx<List<Question>>([]);
   final TextEditingController nameTextController = TextEditingController();
   final TextEditingController bodyTextController = TextEditingController();
+  final TextEditingController identifierTextController =
+      TextEditingController();
   Rx<List<Question>> allQuestions = new Rx<List<Question>>([]);
   Rx<List<TransactionModel>> trans = new Rx<List<TransactionModel>>([]);
+  Rx<List<int>> order = new Rx<List<int>>([]);
 
   @override
   void onReady() async {
@@ -56,6 +59,8 @@ class TransactionController extends GetxController {
     for (Question q in selectedQuestions.value) {
       if (q.id == id) {
         selectedQuestions.value.removeAt(i);
+        selectedQuestions.refresh();
+        allQuestions.refresh();
         return;
       }
       i++;
@@ -65,20 +70,19 @@ class TransactionController extends GetxController {
   setTransaction() {
     Map<String, dynamic> dbQuestions = {};
     for (Question q in selectedQuestions.value) {
+      print('question to set' + q.question);
       dbQuestions[q.question] = [q.yesBlockId, q.noBlockId];
     }
-    const id = 'wat'; //TODO: create identifier Ben
+
     _firestore.collection('transactions').add({
-      'identifier': id,
+      'identifier': identifierTextController.text,
       'name': nameTextController.text,
       'body': bodyTextController.text,
       'questions': dbQuestions,
+      'user': _auth.currentUser!.uid,
+      'order': order.value,
       'createdAt': FieldValue.serverTimestamp(),
     });
-  }
-
-  updatee() {
-    update();
   }
 
   isSelected(Question q) {

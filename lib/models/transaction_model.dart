@@ -6,13 +6,15 @@ class TransactionModel {
   final String identifier;
   final Map<String, dynamic> questions;
   final Timestamp createdAt;
+  final List<int> order;
 
   TransactionModel(
       {required this.name,
       required this.body,
       required this.identifier,
       required this.questions,
-      required this.createdAt});
+      required this.createdAt,
+      required this.order});
 
   factory TransactionModel.fromDocument({required DocumentSnapshot doc}) {
     return TransactionModel(
@@ -20,6 +22,7 @@ class TransactionModel {
         body: doc['body'],
         identifier: doc['identifier'],
         questions: doc['questions'],
-        createdAt: doc['createdAt']);
+        createdAt: doc['createdAt'],
+        order: doc['order'].cast<int>());
   }
 }

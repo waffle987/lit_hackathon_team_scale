@@ -96,6 +96,7 @@ class QnAPage extends StatelessWidget {
             buttonColour: _themeData.primaryColor,
             textColour: Colors.white,
           ),
+          SizedBox(height: _mediaQuery.size.height * 0.05),
           Expanded(
             child: (GetX<QnAController>(
                 init: Get.put(QnAController()),
