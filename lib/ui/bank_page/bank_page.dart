@@ -189,6 +189,8 @@ class BankPage extends StatelessWidget {
                     ),
                   ),
                 ),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          Text('Blocks', style: TextStyle(fontSize: 20)),
           Obx(() {
             return SizedBox(
                 height: _mediaQuery.size.height / 2,
