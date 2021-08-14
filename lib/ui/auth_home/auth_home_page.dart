@@ -2,7 +2,7 @@ import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lit_hackathon_team_scale/controllers/auth_controller.dart';
-import 'package:lit_hackathon_team_scale/ui/blocks_page.dart';
+import 'package:lit_hackathon_team_scale/ui/blocks_page/blocks_page.dart';
 import 'package:lit_hackathon_team_scale/ui/transaction_pages/transaction_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/circle_button.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';

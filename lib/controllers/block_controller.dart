@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/models/Block.dart';
 
@@ -18,7 +17,6 @@ class BlockController extends GetxController {
     super.onReady();
   }
 
-  @override
   void onInit() {
     blockList.bindStream(getBlocks());
   }
@@ -78,5 +76,17 @@ class BlockController extends GetxController {
         .delete()
         .then((value) => print('Block deleted'))
         .catchError((error) => print('Failed to delete block: $error'));
+  }
+
+  void updateBlock(String id) {
+    _firestore
+        .collection('blocks')
+        .doc(id)
+        .update({
+          'body': bodyTextController.text,
+          'title': titleTextController.text,
+        })
+        .then((value) => print('Block updated'))
+        .catchError((error) => print("Failed to updated block: $error"));
   }
 }

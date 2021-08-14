@@ -4,6 +4,7 @@ import 'package:lit_hackathon_team_scale/widgets/input_fields/text_form_field.da
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/models/Block.dart';
 import 'package:lit_hackathon_team_scale/controllers/block_controller.dart';
+import 'package:lit_hackathon_team_scale/ui/blocks_page/edit_block_page.dart';
 
 class BlocksPage extends StatelessWidget {
   BlocksPage({Key? key}) : super(key: key);
@@ -61,17 +62,26 @@ class BlocksPage extends StatelessWidget {
                             //   Text(c.blockList.value[index].body)
                             // ]);
                             return Card(
-                              key: Key('$index'),
-                              child: ListTile(
-                                title: Text(c.blockList.value[index].title),
-                                subtitle: Text(c.blockList.value[index].body),
-                                leading: IconButton(
-                                    icon: new Icon(Icons.delete),
-                                    onPressed: () {
-                                      c.deleteBlock(c.blockList.value[index]);
-                                    }),
-                              ),
-                            );
+                                key: Key('$index'),
+                                child: ListTile(
+                                  title: Text(c.blockList.value[index].title),
+                                  subtitle: Text(c.blockList.value[index].body),
+                                  leading: IconButton(
+                                      icon: new Icon(Icons.more_vert,
+                                          color: Colors.grey),
+                                      onPressed: () {
+                                        print("edit");
+                                        Get.to(() => EditBlockPage(
+                                            block: c.blockList.value[index]));
+                                      }),
+                                  // IconButton(
+                                  //     icon: new Icon(Icons.delete,
+                                  //         color: Colors.redAccent),
+                                  //     onPressed: () {
+                                  //       c.deleteBlock(
+                                  //           c.blockList.value[index]);
+                                  //     }),
+                                ));
                           },
                           onReorder: (oldIndex, newIndex) {
                             if (oldIndex < newIndex) {
