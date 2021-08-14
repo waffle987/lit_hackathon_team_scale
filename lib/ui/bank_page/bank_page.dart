@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/config/ui_helpers.dart';
 import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
+import 'package:lit_hackathon_team_scale/ui/bank_page/bank_text_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/elongated_button.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';
 
@@ -160,7 +161,9 @@ class BankPage extends StatelessWidget {
               child: ListTile(
                 leading: ElongatedButton(
                   text: 'No',
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => BankTextPage(
+                      blockId: _bankController
+                          .transactionQuestionList.value![index].noId)),
                   buttonColour: Colors.red,
                   textColour: Colors.white,
                 ),
@@ -171,7 +174,9 @@ class BankPage extends StatelessWidget {
                 ),
                 trailing: ElongatedButton(
                   text: 'Yes',
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => BankTextPage(
+                      blockId: _bankController
+                          .transactionQuestionList.value![index].yesId)),
                   buttonColour: Colors.green,
                   textColour: Colors.white,
                 ),
