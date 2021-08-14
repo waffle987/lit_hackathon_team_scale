@@ -63,10 +63,13 @@ class BlocksPage extends StatelessWidget {
                             return Card(
                               key: Key('$index'),
                               child: ListTile(
-                                leading: FlutterLogo(size: 56.0),
                                 title: Text(c.blockList.value[index].title),
                                 subtitle: Text(c.blockList.value[index].body),
-                                trailing: Icon(Icons.more_vert),
+                                leading: IconButton(
+                                    icon: new Icon(Icons.delete),
+                                    onPressed: () {
+                                      c.deleteBlock(c.blockList.value[index]);
+                                    }),
                               ),
                             );
                           },
