@@ -14,6 +14,7 @@ class BankPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData _themeData = Theme.of(context);
     final MediaQueryData _mediaQuery = MediaQuery.of(context);
 
     /// GetX controllers
@@ -94,44 +95,52 @@ class BankPage extends StatelessWidget {
       return ListView(
         children: [
           SizedBox(height: _mediaQuery.size.height * 0.02),
-          _buildSection(
-            cardColour: Colors.blue,
-            header: 'Identifier',
-            description:
-                'Enter the identifier that your law firm has given you',
-            hintText: 'xxxxxx',
-            textEditingController: _identifierTextController,
-            textInputType: TextInputType.text,
+          Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: _mediaQuery.size.width * 0.2),
+            child: _buildSection(
+              cardColour: _themeData.primaryColor,
+              header: 'Identifier',
+              description:
+                  'Enter the identifier that your law firm has given you',
+              hintText: 'xxxxxx',
+              textEditingController: _identifierTextController,
+              textInputType: TextInputType.text,
+            ),
           ),
-          SizedBox(height: _mediaQuery.size.height * 0.02),
-          ElongatedButton(
-            text: 'Enter',
-            onPressed: () {
-              if (_identifierTextController.text.isNotEmpty) {
-                _bankController.getTransaction(
-                    identifier: _identifierTextController.text);
+          SizedBox(height: _mediaQuery.size.height * 0.05),
+          Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: _mediaQuery.size.width * 0.3),
+            child: ElongatedButton(
+              text: 'Enter',
+              onPressed: () {
+                if (_identifierTextController.text.isNotEmpty) {
+                  _bankController.getTransaction(
+                      identifier: _identifierTextController.text);
 
-                Get.snackbar(
-                  'Success'.tr,
-                  'You have entered a valid identifier!',
-                  snackPosition: SnackPosition.BOTTOM,
-                  duration: Duration(seconds: 5),
-                  backgroundColor: Colors.green,
-                  colorText: Get.theme.snackBarTheme.actionTextColor,
-                );
-              } else {
-                Get.snackbar(
-                  'Unsuccessful'.tr,
-                  'You have entered an incorrect identifier. Please try again!',
-                  snackPosition: SnackPosition.BOTTOM,
-                  duration: Duration(seconds: 5),
-                  backgroundColor: Colors.red,
-                  colorText: Get.theme.snackBarTheme.actionTextColor,
-                );
-              }
-            },
-            buttonColour: Colors.green,
-            textColour: Colors.white,
+                  Get.snackbar(
+                    'Success'.tr,
+                    'You have entered a valid identifier!',
+                    snackPosition: SnackPosition.BOTTOM,
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.green,
+                    colorText: Get.theme.snackBarTheme.actionTextColor,
+                  );
+                } else {
+                  Get.snackbar(
+                    'Unsuccessful'.tr,
+                    'You have entered an incorrect identifier. Please try again!',
+                    snackPosition: SnackPosition.BOTTOM,
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.red,
+                    colorText: Get.theme.snackBarTheme.actionTextColor,
+                  );
+                }
+              },
+              buttonColour: Colors.green,
+              textColour: Colors.white,
+            ),
           ),
         ],
       );

@@ -22,7 +22,9 @@ class VarChangeController extends GetxController {
   void abc({required String blockId}) {
     _bankController.getBlock(blockId: blockId);
 
-    setText(_bankController.currentBlock.value!.body);
+    setText(_bankController.currentBlock.value == null
+        ? 'Please refresh!'
+        : _bankController.currentBlock.value!.body);
   }
 
   void setText(String text) {
