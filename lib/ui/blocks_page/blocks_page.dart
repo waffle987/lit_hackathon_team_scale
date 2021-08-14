@@ -53,7 +53,6 @@ class BlocksPage extends StatelessWidget {
           GetX<BlockController>(
               init: Get.put(BlockController()),
               builder: (BlockController c) {
-                print(c);
                 if (c.blockList.value.length != 0) {
                   return Container(
                       height: _mediaQuery.size.height,

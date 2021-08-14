@@ -18,6 +18,12 @@ class Question {
       required this.yesTitle,
       required this.noTitle});
 
+  @override
+  int get hashCode => id.hashCode;
+
+  @override
+  bool operator ==(Object other) => other is Question && other.id == this.id;
+
   factory Question.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
     Map<String, dynamic> data = doc.data()!;
     return Question(

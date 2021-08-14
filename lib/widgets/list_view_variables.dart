@@ -44,7 +44,6 @@ class ListViewVariables extends StatelessWidget {
             child: const Text('Submit'),
             onPressed: () {
               // update the text;
-              print(c.results.value.toString());
               c.replaceVars(c.results);
             })
       ],

@@ -90,6 +90,8 @@ class QnAPage extends StatelessWidget {
               } else {
                 await c.setQuestion();
                 c.quesTextController.text = '';
+                c.noBlockId.value = '';
+                c.yesBlockId.value = '';
               }
             },
             buttonColour: _themeData.primaryColor,
