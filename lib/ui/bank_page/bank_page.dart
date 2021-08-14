@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/config/ui_helpers.dart';
 import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
+import 'package:lit_hackathon_team_scale/controllers/var_change_controller.dart';
 import 'package:lit_hackathon_team_scale/ui/bank_page/bank_text_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/elongated_button.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';
@@ -18,6 +19,8 @@ class BankPage extends StatelessWidget {
 
     /// GetX controllers
     final BankController _bankController = Get.put(BankController());
+    final VarChangeController _varChangeController =
+        Get.put(VarChangeController());
 
     Widget _buildSection({
       required Color cardColour,
@@ -182,7 +185,16 @@ class BankPage extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
+          ElongatedButton(
+            text: 'Enter',
+            onPressed: () async {
+              await _varChangeController.createPDF();
+            },
+            buttonColour: Colors.red,
+            textColour: Colors.white,
+          ),
         ],
       );
     }

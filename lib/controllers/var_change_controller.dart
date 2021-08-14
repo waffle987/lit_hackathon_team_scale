@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'dart:io';
 
 class VarChangeController extends GetxController {
   static VarChangeController to = Get.find();
@@ -70,5 +73,22 @@ class VarChangeController extends GetxController {
     list.add(text.value);
 
     print(list.length);
+  }
+
+  createPDF() async {
+    final pdf = pw.Document();
+
+    pdf.addPage(pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (pw.Context context) {
+          return pw.ListView.builder(
+            itemBuilder: (_, index) {
+              return pw.Text(this.list[index]);
+            },
+            itemCount: this.list.length,
+          ); // Center
+        })); // Page
+    final file = File("example.pdf");
+    await file.writeAsBytes(await pdf.save());
   }
 }
