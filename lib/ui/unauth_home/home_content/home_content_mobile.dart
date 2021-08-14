@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lit_hackathon_team_scale/ui/home/home_details.dart';
+import 'package:lit_hackathon_team_scale/ui/unauth_home/home_details.dart';
 import 'package:lit_hackathon_team_scale/widgets/call_to_action/call_to_action.dart';
 
 class HomeContentMobile extends StatelessWidget {
