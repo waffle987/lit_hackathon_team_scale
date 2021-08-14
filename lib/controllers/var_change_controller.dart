@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 
 class VarChangeController extends GetxController {
+  RxList<String> list = RxList<String>();
+
   VarChangeController();
+
   final results = [''].obs;
   final text = '''can use it for many word games:
   to create or to solve {{ssss}}, {{rowords}} rosswords with arrows),

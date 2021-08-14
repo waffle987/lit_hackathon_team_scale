@@ -4,15 +4,13 @@ class TransactionModel {
   final String name;
   final String body;
   final String identifier;
-  final Map<String, dynamic> confirmedBlocks;
-  final Map<String, dynamic> pendingBlocks;
+  final Map<String, dynamic> questions;
 
   TransactionModel({
     required this.name,
     required this.body,
     required this.identifier,
-    required this.confirmedBlocks,
-    required this.pendingBlocks,
+    required this.questions,
   });
 
   factory TransactionModel.fromDocument({required DocumentSnapshot doc}) {
@@ -20,8 +18,7 @@ class TransactionModel {
       name: doc['name'],
       body: doc['body'],
       identifier: doc['identifier'],
-      confirmedBlocks: doc['confirmedBlocks'],
-      pendingBlocks: doc['pendingBlocks'],
+      questions: doc['questions'],
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/controllers/auth_controller.dart';
-import 'package:lit_hackathon_team_scale/ui/unauth_home/unauth_home_page.dart';
+import 'package:lit_hackathon_team_scale/ui/loading_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'LIT Hack',
       theme: ThemeData.dark(),
-      home: UnAuthHomePage(),
+      home: LoadingPage(),
     );
   }
 }
