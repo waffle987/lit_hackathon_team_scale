@@ -199,7 +199,13 @@ class BankPage extends StatelessWidget {
                   ),
                 ),
           SizedBox(height: _mediaQuery.size.height * 0.02),
-          Text('Blocks', style: TextStyle(fontSize: 20)),
+          Text(
+            'Blocks',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+            ),
+          ),
           Obx(() {
             return SizedBox(
                 height: _mediaQuery.size.height / 2,
@@ -213,7 +219,7 @@ class BankPage extends StatelessWidget {
                                 _varChangeController.list[index],
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 15.0,
+                                  fontSize: 16.0,
                                 ),
                               ),
                               leading: IconButton(
@@ -226,8 +232,39 @@ class BankPage extends StatelessWidget {
           }),
           ElongatedButton(
             text: 'Download PDF',
-            onPressed: () {
-              _varChangeController.createPDF();
+            onPressed: () async {
+              if (_varChangeController.list.length > 0) {
+                try {
+                  await _varChangeController.createPDF();
+                  Get.snackbar(
+                    'Success'.tr,
+                    'You have successfully downloaded the document!',
+                    snackPosition: SnackPosition.BOTTOM,
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.green,
+                    colorText: Get.theme.snackBarTheme.actionTextColor,
+                  );
+                } catch (e) {
+                  print(e);
+                  Get.snackbar(
+                    'Unsuccessful'.tr,
+                    'Download unsuccessful!',
+                    snackPosition: SnackPosition.BOTTOM,
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.red,
+                    colorText: Get.theme.snackBarTheme.actionTextColor,
+                  );
+                }
+              } else {
+                Get.snackbar(
+                  'Unsucessful'.tr,
+                  'You need to have at least 1 block!',
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: Duration(seconds: 5),
+                  backgroundColor: Colors.red,
+                  colorText: Get.theme.snackBarTheme.actionTextColor,
+                );
+              }
             },
             buttonColour: Colors.green,
             textColour: Colors.white,

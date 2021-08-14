@@ -3,8 +3,10 @@ import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:universal_html/html.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class VarChangeController extends GetxController {
   static VarChangeController to = Get.find();
@@ -70,22 +72,32 @@ class VarChangeController extends GetxController {
   }
 
   createPDF() async {
+    // PdfDocument doc = PdfDocument();
+
     final pdf = pw.Document();
-    final fontData = File('open-sans.ttf').readAsBytesSync();
-    final ttf = pw.Font.ttf(fontData.buffer.asByteData());
+    final font = await rootBundle.load("OpenSans-Regular.ttf");
+    final ttf = pw.Font.ttf(font);
 
     pdf.addPage(pw.Page(
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.ListView.builder(
             itemBuilder: (_, index) {
-              return pw.Text(this.list[index],
-                  style: pw.TextStyle(font: ttf, fontSize: 40));
+              return pw.Column(children: <pw.Widget>[
+                pw.Text(this.list[index],
+                    style: pw.TextStyle(font: ttf, fontSize: 14)),
+                pw.SizedBox(height: 10),
+              ]);
             },
             itemCount: this.list.length,
           ); // Center
         })); // Page
-    final file = File("example.pdf");
-    await file.writeAsBytes(await pdf.save());
+
+    List<int> bytes = await pdf.save();
+    AnchorElement(
+        href:
+            "data:application/octet-stream;charset=utf-16le;base64,${base64.encode(bytes)}")
+      ..setAttribute("download", "example.pdf")
+      ..click();
   }
 }
