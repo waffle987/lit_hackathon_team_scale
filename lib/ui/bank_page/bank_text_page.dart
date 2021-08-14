@@ -16,28 +16,25 @@ class BankTextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// GetX controllers
-    final VarChangeController c =
-        Get.put(VarChangeController(blockId: blockId));
+    final VarChangeController c = Get.put(VarChangeController());
     final BankController _bankController = BankController.to;
+
+    c.abc(blockId: blockId);
 
     return Scaffold(
       body: CenteredView(
-        child: Obx(() {
-          if (_bankController.currentBlock.value == null) {
-            return Container();
-          } else {
-            return Column(
-              children: [
-                Text(_bankController.currentBlock.value!.title),
-                SizedBox(height: 20.0),
-                Text(c.text.value),
-                ListViewVariables(
-                  c.findVars(c.text.value),
-                ),
-              ],
-            );
-          }
-        }),
+        child: Obx(() => _bankController.currentBlock.value == null
+            ? Container()
+            : Column(
+                children: [
+                  Text(_bankController.currentBlock.value!.title),
+                  SizedBox(height: 20.0),
+                  Text(c.text.value),
+                  ListViewVariables(
+                    c.findVars(c.text.value),
+                  ),
+                ],
+              )),
       ),
     );
   }

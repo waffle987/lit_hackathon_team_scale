@@ -4,25 +4,10 @@ import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
 class VarChangeController extends GetxController {
   static VarChangeController to = Get.find();
 
-  final String blockId;
-
   RxList<String> list = RxList<String>();
-
-  VarChangeController({required this.blockId});
 
   /// GetX controllers
   final BankController _bankController = BankController.to;
-
-  @override
-  void onInit() {
-    if (blockId != '') {
-      _bankController.getBlock(blockId: blockId);
-
-      setText(_bankController.currentBlock.value!.body);
-    }
-
-    super.onInit();
-  }
 
   final results = [''].obs;
   final text = '''can use it for many word games:
@@ -33,6 +18,12 @@ class VarChangeController extends GetxController {
   (OuLiPo: workshop of potential litterature) such as lipograms, pangrams, anagrams,
   univocalics, uniconsonantics etc.'''
       .obs;
+
+  void abc({required String blockId}) {
+    _bankController.getBlock(blockId: blockId);
+
+    setText(_bankController.currentBlock.value!.body);
+  }
 
   void setText(String text) {
     this.text.value = text;
