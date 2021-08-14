@@ -71,6 +71,7 @@ Widget _popUpCard({
   required Color buttonColour,
 }) {
   return Container(
+    width: 200.0,
     padding: const EdgeInsets.only(
       top: 66.0 + 16.0,
       bottom: 16.0,
