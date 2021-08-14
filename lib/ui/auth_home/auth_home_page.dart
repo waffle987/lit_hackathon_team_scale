@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lit_hackathon_team_scale/controllers/auth_controller.dart';
 import 'package:lit_hackathon_team_scale/ui/blocks_page/blocks_page.dart';
+import 'package:lit_hackathon_team_scale/ui/logic_flow/create_qna_page.dart';
 import 'package:lit_hackathon_team_scale/ui/transaction_pages/transaction_page.dart';
 import 'package:lit_hackathon_team_scale/widgets/buttons/circle_button.dart';
 import 'package:lit_hackathon_team_scale/widgets/centred_view.dart';
@@ -37,12 +38,13 @@ class AuthHomePage extends StatelessWidget {
           Tab(
             child: Text('Blocks'),
           ),
+          Tab(child: Text('QnA'))
         ],
       );
     }
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -92,10 +94,7 @@ class AuthHomePage extends StatelessWidget {
               ),
               Expanded(
                 child: TabBarView(
-                  children: [
-                    TransactionPage(),
-                    BlocksPage(),
-                  ],
+                  children: [TransactionPage(), BlocksPage(), QnAPage()],
                 ),
               ),
             ],

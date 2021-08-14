@@ -22,14 +22,14 @@ class EditBlockPage extends StatelessWidget {
           EditableTextFormField(
               header: "Title",
               hintText: 'Write here...',
-              textEditingController: c.titleTextController,
+              textEditingController: c.editTitleTextController,
               initialText: block.title,
               textInputType: TextInputType.text),
           SizedBox(height: _mediaQuery.size.height * 0.02),
           EditableTextFormField(
               header: "Body",
               hintText: 'Write here...',
-              textEditingController: c.bodyTextController,
+              textEditingController: c.editBodyTextController,
               initialText: block.body,
               textInputType: TextInputType.multiline),
           SizedBox(height: _mediaQuery.size.height * 0.05),

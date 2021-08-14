@@ -10,6 +10,8 @@ class BlockController extends GetxController {
   final TextEditingController titleTextController = TextEditingController();
   final TextEditingController bodyTextController = TextEditingController();
 
+  final TextEditingController editTitleTextController = TextEditingController();
+  final TextEditingController editBodyTextController = TextEditingController();
   Rx<List<Block>> blockList = Rx<List<Block>>([]);
 
   @override
@@ -83,8 +85,8 @@ class BlockController extends GetxController {
         .collection('blocks')
         .doc(id)
         .update({
-          'body': bodyTextController.text,
-          'title': titleTextController.text,
+          'body': editTitleTextController.text,
+          'title': editBodyTextController.text,
         })
         .then((value) => print('Block updated'))
         .catchError((error) => print("Failed to updated block: $error"));
