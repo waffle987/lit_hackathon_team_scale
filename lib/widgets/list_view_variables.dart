@@ -45,6 +45,17 @@ class ListViewVariables extends StatelessWidget {
             onPressed: () {
               // update the text;
               c.replaceVars(c.results);
+
+              Get.back();
+
+              Get.snackbar(
+                'Done'.tr,
+                'You have completed this block!',
+                snackPosition: SnackPosition.BOTTOM,
+                duration: Duration(seconds: 5),
+                backgroundColor: Colors.green,
+                colorText: Get.theme.snackBarTheme.actionTextColor,
+              );
             })
       ],
     );
