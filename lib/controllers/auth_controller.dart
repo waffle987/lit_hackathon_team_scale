@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/models/user_model.dart';
 import 'package:lit_hackathon_team_scale/ui/auth_home/auth_home_page.dart';
 import 'package:lit_hackathon_team_scale/ui/unauth_home/unauth_home_page.dart';
-import 'package:lit_hackathon_team_scale/widgets/loading.dart';
 
 class AuthController extends GetxController {
   static AuthController to = Get.find();
@@ -119,16 +118,13 @@ class AuthController extends GetxController {
 
   /// Method to handle user sign in using email and password
   void signInWithEmailAndPassword(BuildContext context) async {
-    showLoadingIndicator();
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: emailTextController.text.trim(),
           password: passwordTextController.text.trim());
       emailTextController.clear();
       passwordTextController.clear();
-      hideLoadingIndicator();
     } catch (error) {
-      hideLoadingIndicator();
       Get.snackbar(
         'Incorrect Email or Password'.tr,
         'The email or password you entered is incorrect. Please try again.'.tr,
@@ -156,7 +152,6 @@ class AuthController extends GetxController {
 
   /// User registration using email and password
   void registerWithEmailAndPassword(BuildContext context) async {
-    showLoadingIndicator();
     try {
       await _firebaseAuth
           .createUserWithEmailAndPassword(
@@ -179,10 +174,8 @@ class AuthController extends GetxController {
         _createUserFirestore(_newUser, result.user!);
         emailTextController.clear();
         passwordTextController.clear();
-        hideLoadingIndicator();
       });
     } on FirebaseAuthException catch (error) {
-      hideLoadingIndicator();
       Get.snackbar(
         'auth.signUpErrorTitle'.tr,
         error.message!,
@@ -200,7 +193,6 @@ class AuthController extends GetxController {
     String _authUpdateUserNoticeTitle = 'auth.updateUserSuccessNoticeTitle'.tr;
     String _authUpdateUserNotice = 'auth.updateUserSuccessNotice'.tr;
     try {
-      showLoadingIndicator();
       try {
         await _firebaseAuth
             .signInWithEmailAndPassword(email: oldEmail, password: password)
@@ -220,7 +212,6 @@ class AuthController extends GetxController {
           _authUpdateUserNotice = 'auth.wrongPasswordNotice'.tr;
         }
       }
-      hideLoadingIndicator();
       Get.snackbar(
         _authUpdateUserNoticeTitle,
         _authUpdateUserNotice,
@@ -230,7 +221,6 @@ class AuthController extends GetxController {
         colorText: Get.theme.snackBarTheme.actionTextColor,
       );
     } on PlatformException catch (error) {
-      hideLoadingIndicator();
       print(error.code);
       String authError;
       switch (error.code) {
@@ -254,11 +244,9 @@ class AuthController extends GetxController {
 
   /// Password reset email
   Future<void> sendPasswordResetEmail(BuildContext context) async {
-    showLoadingIndicator();
     try {
       await _firebaseAuth.sendPasswordResetEmail(
           email: emailTextController.text);
-      hideLoadingIndicator();
       Get.snackbar(
         'auth.resetPasswordNoticeTitle'.tr,
         'auth.resetPasswordNotice'.tr,
@@ -268,7 +256,6 @@ class AuthController extends GetxController {
         colorText: Get.theme.snackBarTheme.actionTextColor,
       );
     } on FirebaseAuthException catch (error) {
-      hideLoadingIndicator();
       Get.snackbar(
         'auth.resetPasswordFailed'.tr,
         error.message!,

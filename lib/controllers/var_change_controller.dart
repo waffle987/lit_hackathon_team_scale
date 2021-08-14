@@ -3,6 +3,7 @@ import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
 
 class VarChangeController extends GetxController {
   static VarChangeController to = Get.find();
+
   final String blockId;
 
   RxList<String> list = RxList<String>();
@@ -61,5 +62,13 @@ class VarChangeController extends GetxController {
       }
     }
     text.value = text.value;
+
+    addToList();
+  }
+
+  void addToList() {
+    list.add(text.value);
+
+    print(list.length);
   }
 }

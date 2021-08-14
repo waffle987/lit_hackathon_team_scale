@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/controllers/var_change_controller.dart';
 
 class ListViewVariables extends StatelessWidget {
-  final VarChangeController c = Get.put(VarChangeController(blockId: ''));
+  final VarChangeController c = VarChangeController.to;
 
   List<String> vars = [];
   ListViewVariables(this.vars);
