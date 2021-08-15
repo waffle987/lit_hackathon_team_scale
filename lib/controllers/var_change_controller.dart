@@ -101,7 +101,7 @@ class VarChangeController extends GetxController {
                 child: pw.Column(
                   children: <pw.Widget>[
                     pw.Text(this.list[index],
-                        style: pw.TextStyle(font: ttf, fontSize: 14)),
+                        style: pw.TextStyle(font: ttf, fontSize: 12)),
                   ],
                 ),
               );

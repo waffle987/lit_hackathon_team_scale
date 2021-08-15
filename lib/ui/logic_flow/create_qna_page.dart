@@ -86,10 +86,34 @@ class QnAPage extends StatelessWidget {
             onPressed: () async {
               if (c.quesTextController.text == "") {
                 print("input a question");
+                Get.snackbar(
+                  "Question".tr,
+                  "Question can't be empty!".tr,
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: Duration(seconds: 7),
+                  backgroundColor: Colors.red,
+                  colorText: Get.theme.snackBarTheme.actionTextColor,
+                );
               } else if (c.yesBlockId.value == "") {
+                Get.snackbar(
+                  "Choose a yes block!".tr,
+                  "".tr,
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: Duration(seconds: 7),
+                  backgroundColor: Colors.red,
+                  colorText: Get.theme.snackBarTheme.actionTextColor,
+                );
                 print("choose a yes block");
               } else if (c.noBlockId.value == "") {
                 print("choose a no block");
+                Get.snackbar(
+                  "Choose a no block!".tr,
+                  "".tr,
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: Duration(seconds: 7),
+                  backgroundColor: Colors.red,
+                  colorText: Get.theme.snackBarTheme.actionTextColor,
+                );
               } else {
                 await c.setQuestion();
                 c.quesTextController.text = '';
