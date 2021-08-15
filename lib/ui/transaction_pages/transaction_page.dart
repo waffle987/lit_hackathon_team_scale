@@ -43,27 +43,13 @@ class TransactionPage extends StatelessWidget {
                           child: ListTile(
                             title: Text(c.trans.value[index].name),
                             subtitle: Text(c.trans.value[index].body),
-                            leading: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  IconButton(
-                                      icon: new Icon(Icons.edit,
-                                          color: Colors.blueAccent),
-                                      onPressed: () {
-                                        // Get.to(() => EditBlockPage(
-                                        //     block: c.blockList
-                                        //         .value[index]));
-                                        //TODO: Edit Question page
-                                      }),
-                                  IconButton(
-                                      icon: new Icon(Icons.delete,
-                                          color: Colors.redAccent),
-                                      onPressed: () {
-                                        //TODO: Create confirmation alert
-                                        c.deleteTransaction(
-                                            c.trans.value[index]);
-                                      }),
-                                ]),
+                            leading: IconButton(
+                                icon: new Icon(Icons.delete,
+                                    color: Colors.redAccent),
+                                onPressed: () {
+                                  //TODO: Create confirmation alert
+                                  c.deleteTransaction(c.trans.value[index]);
+                                }),
                           ));
                     },
                   ))),

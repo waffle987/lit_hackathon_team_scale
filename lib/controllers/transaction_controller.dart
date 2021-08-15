@@ -114,6 +114,14 @@ class TransactionController extends GetxController {
   }
 
   deleteTransaction(TransactionModel transactions) {
-    _firestore.collection('transactions').doc(transactions.identifier).delete();
+    _firestore
+        .collection('transactions')
+        .where('identifier', isEqualTo: transactions.identifier)
+        .get()
+        .then((QuerySnapshot snap) {
+      snap.docs.forEach((doc) {
+        doc.reference.delete();
+      });
+    });
   }
 }

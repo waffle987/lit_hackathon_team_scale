@@ -85,8 +85,8 @@ class BlockController extends GetxController {
         .collection('blocks')
         .doc(id)
         .update({
-          'body': editTitleTextController.text,
-          'title': editBodyTextController.text,
+          'body': editBodyTextController.text,
+          'title': editTitleTextController.text,
         })
         .then((value) => print('Block updated'))
         .catchError((error) => print("Failed to updated block: $error"));

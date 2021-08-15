@@ -26,8 +26,9 @@ class BlocksPage extends StatelessWidget {
               textInputType: TextInputType.text),
           SizedBox(height: _mediaQuery.size.height * 0.02),
           CustomTextFormField(
-              header: "Body (Wrap your variables with {{ }})",
-              hintText: 'e.g. Bob is {{variable_1}}...',
+              header:
+                  "Body (Wrap your variables with {{ }}, e.g. Bob is {{variable_1}}... No spacebars or underscores. )",
+              hintText: 'Write here...',
               textEditingController: c.bodyTextController,
               textInputType: TextInputType.multiline),
           SizedBox(height: _mediaQuery.size.height * 0.05),
@@ -62,46 +63,46 @@ class BlocksPage extends StatelessWidget {
                 if (c.blockList.value.length != 0) {
                   return Container(
                       height: _mediaQuery.size.height,
-                      child: ReorderableListView.builder(
-                          padding: const EdgeInsets.all(10),
-                          itemCount: c.blockList.value.length,
-                          itemBuilder: (_, index) {
-                            return Card(
-                                key: Key('$index'),
-                                child: ListTile(
-                                    title: Text(c.blockList.value[index].title),
-                                    subtitle:
-                                        Text(c.blockList.value[index].body),
-                                    leading: Container(
-                                      child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: <Widget>[
-                                            IconButton(
-                                                icon: new Icon(Icons.edit,
-                                                    color: Colors.grey),
-                                                onPressed: () {
-                                                  Get.to(() => EditBlockPage(
-                                                      block: c.blockList
-                                                          .value[index]));
-                                                }),
-                                            IconButton(
-                                                icon: new Icon(Icons.delete,
-                                                    color: Colors.redAccent),
-                                                onPressed: () {
-                                                  c.deleteBlock(
-                                                      c.blockList.value[index]);
-                                                }),
-                                          ]),
-                                    )));
-                          },
-                          onReorder: (oldIndex, newIndex) {
-                            if (oldIndex < newIndex) {
-                              newIndex -= 1;
-                            }
-                            final Block item =
-                                c.blockList.value.removeAt(oldIndex);
-                            c.blockList.value.insert(newIndex, item);
-                          }));
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(10),
+                        itemCount: c.blockList.value.length,
+                        itemBuilder: (_, index) {
+                          return Card(
+                              key: Key('$index'),
+                              child: ListTile(
+                                  title: Text(c.blockList.value[index].title),
+                                  subtitle: Text(c.blockList.value[index].body),
+                                  leading: Container(
+                                    child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          IconButton(
+                                              icon: new Icon(Icons.edit,
+                                                  color: Colors.grey),
+                                              onPressed: () {
+                                                Get.to(() => EditBlockPage(
+                                                    block: c.blockList
+                                                        .value[index]));
+                                              }),
+                                          IconButton(
+                                              icon: new Icon(Icons.delete,
+                                                  color: Colors.redAccent),
+                                              onPressed: () {
+                                                c.deleteBlock(
+                                                    c.blockList.value[index]);
+                                              }),
+                                        ]),
+                                  )));
+                        },
+                        // onReorder: (oldIndex, newIndex) {
+                        //   if (oldIndex < newIndex) {
+                        //     newIndex -= 1;
+                        //   }
+                        //   final Block item =
+                        //       c.blockList.value.removeAt(oldIndex);
+                        //   c.blockList.value.insert(newIndex, item);
+                        // }
+                      ));
                 } else {
                   return Text('Loading...');
                 }

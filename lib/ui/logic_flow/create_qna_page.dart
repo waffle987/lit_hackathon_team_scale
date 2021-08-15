@@ -23,8 +23,8 @@ class QnAPage extends StatelessWidget {
 
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        body: Column(children: [
+      child: SingleChildScrollView(
+        child: Column(children: [
           SizedBox(height: _mediaQuery.size.height * 0.02),
           CustomTextFormField(
               header: "Question",
@@ -39,43 +39,47 @@ class QnAPage extends StatelessWidget {
             Tab(child: Text('Yes')),
             Tab(child: Text('No')),
           ]),
-          Expanded(
+          SizedBox(
+              height: _mediaQuery.size.height / 4,
               child: TabBarView(children: <Widget>[
-            ListView.builder(
-                itemBuilder: (_, index) {
-                  return Obx(() => CheckboxListTile(
-                      value: c.yesBlockId.value != '' &&
-                          c.yesBlockId.value == c2.blockList.value[index].id,
-                      title: Text(c2.blockList.value[index].title),
-                      subtitle: Text(c2.blockList.value[index].body),
-                      onChanged: (bool? newVal) {
-                        if (newVal!) {
-                          c.yesBlockId.value = c2.blockList.value[index].id!;
-                          c.yesTitle.value = c2.blockList.value[index].title;
-                        } else {
-                          c.yesBlockId.value = '';
-                        }
-                      }));
-                },
-                itemCount: c2.blockList.value.length),
-            ListView.builder(
-                itemBuilder: (_, index) {
-                  return Obx(() => CheckboxListTile(
-                      value: c.noBlockId.value != '' &&
-                          c.noBlockId.value == c2.blockList.value[index].id,
-                      title: Text(c2.blockList.value[index].title),
-                      subtitle: Text(c2.blockList.value[index].body),
-                      onChanged: (bool? newVal) {
-                        if (newVal!) {
-                          c.noBlockId.value = c2.blockList.value[index].id!;
-                          c.noTitle.value = c2.blockList.value[index].title;
-                        } else {
-                          c.noBlockId.value = '';
-                        }
-                      }));
-                },
-                itemCount: c2.blockList.value.length),
-          ])),
+                ListView.builder(
+                    itemBuilder: (_, index) {
+                      return Obx(() => CheckboxListTile(
+                          value: c.yesBlockId.value != '' &&
+                              c.yesBlockId.value ==
+                                  c2.blockList.value[index].id,
+                          title: Text(c2.blockList.value[index].title),
+                          subtitle: Text(c2.blockList.value[index].body),
+                          onChanged: (bool? newVal) {
+                            if (newVal!) {
+                              c.yesBlockId.value =
+                                  c2.blockList.value[index].id!;
+                              c.yesTitle.value =
+                                  c2.blockList.value[index].title;
+                            } else {
+                              c.yesBlockId.value = '';
+                            }
+                          }));
+                    },
+                    itemCount: c2.blockList.value.length),
+                ListView.builder(
+                    itemBuilder: (_, index) {
+                      return Obx(() => CheckboxListTile(
+                          value: c.noBlockId.value != '' &&
+                              c.noBlockId.value == c2.blockList.value[index].id,
+                          title: Text(c2.blockList.value[index].title),
+                          subtitle: Text(c2.blockList.value[index].body),
+                          onChanged: (bool? newVal) {
+                            if (newVal!) {
+                              c.noBlockId.value = c2.blockList.value[index].id!;
+                              c.noTitle.value = c2.blockList.value[index].title;
+                            } else {
+                              c.noBlockId.value = '';
+                            }
+                          }));
+                    },
+                    itemCount: c2.blockList.value.length),
+              ])),
           SizedBox(height: _mediaQuery.size.height * 0.05),
           ElongatedButton(
             text: 'Create Question',
@@ -105,7 +109,8 @@ class QnAPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: _mediaQuery.size.height * 0.05),
-          Expanded(
+          SizedBox(
+            height: _mediaQuery.size.height / 2,
             child: (GetX<QnAController>(
                 init: Get.put(QnAController()),
                 builder: (QnAController c) {
@@ -121,10 +126,10 @@ class QnAPage extends StatelessWidget {
                                 child: ListTile(
                                     title:
                                         Text(c.questions.value[index].question),
-                                    subtitle: Text(
+                                    subtitle: Text('Yes: ' +
                                         c.questions.value[index].yesTitle +
-                                            ' ' +
-                                            c.questions.value[index].noTitle),
+                                        ' No: ' +
+                                        c.questions.value[index].noTitle),
                                     leading: Expanded(
                                       child: Row(
                                           mainAxisSize: MainAxisSize.min,

@@ -62,7 +62,7 @@ class CreateTransactionPage extends StatelessWidget {
             ),
             SizedBox(height: _mediaQuery.size.height * 0.02),
             Obx(() => Container(
-                  height: _mediaQuery.size.height / 2,
+                  height: _mediaQuery.size.height / 4,
                   child: ReorderableListView.builder(
                     padding: const EdgeInsets.all(10),
                     itemCount: c.selectedQuestions.value.length,
