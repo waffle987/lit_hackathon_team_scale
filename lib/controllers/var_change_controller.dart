@@ -78,21 +78,38 @@ class VarChangeController extends GetxController {
     final font = await rootBundle.load("OpenSans-Regular.ttf");
     final ttf = pw.Font.ttf(font);
 
-    pdf.addPage(pw.Page(
-        pageFormat: PdfPageFormat.a4,
-        build: (pw.Context context) {
-          return pw.ListView.builder(
-            itemBuilder: (_, index) {
-              return pw.Column(children: <pw.Widget>[
-                pw.Text(this.list[index],
-                    style: pw.TextStyle(font: ttf, fontSize: 14)),
-                pw.SizedBox(height: 10),
-              ]);
-            },
-            itemCount: this.list.length,
-          ); // Center
-        })); // Page
-
+    // pdf.addPage(pw.Page(
+    //     pageFormat: PdfPageFormat.a4,
+    //     build: (pw.Context context) {
+    //       return pw.ListView.builder(
+    //         itemBuilder: (_, index) {
+    // return pw.Column(children: <pw.Widget>[
+    //   pw.Text(this.list[index],
+    //       style: pw.TextStyle(font: ttf, fontSize: 14)),
+    //   pw.SizedBox(height: 10),
+    // ]);
+    //         },
+    //         itemCount: this.list.length,
+    //       ); // Center
+    //     })); // Page
+    pdf.addPage(
+      pw.MultiPage(
+        build: (pw.Context context) => <pw.Widget>[
+          pw.Wrap(
+            children: List<pw.Widget>.generate(list.length, (int index) {
+              return pw.Container(
+                child: pw.Column(
+                  children: <pw.Widget>[
+                    pw.Text(this.list[index],
+                        style: pw.TextStyle(font: ttf, fontSize: 14)),
+                  ],
+                ),
+              );
+            }),
+          ),
+        ],
+      ),
+    );
     List<int> bytes = await pdf.save();
     AnchorElement(
         href:
