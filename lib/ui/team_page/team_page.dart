@@ -86,7 +86,7 @@ class TeamPage extends StatelessWidget {
             _buildCard(
                 name: 'Zhe Quan',
                 bio:
-                    'A student that loves to code and wants to contribute back to society through the varse knowledge he gained.                                                                    ',
+                    'A student that loves to code and wants to contribute back to society through the vast knowledge he gained.                                                                    ',
                 photo: 'assets/ZQ.jpg'),
             _buildCard(
                 name: 'Darren Ong',
