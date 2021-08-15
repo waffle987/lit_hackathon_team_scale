@@ -49,7 +49,7 @@ class TeamPage extends StatelessWidget {
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
-                        verticalSpaceSmall,
+                        verticalSpaceTiny,
                         Text(
                           bio,
                           style: TextStyle(
@@ -87,7 +87,7 @@ class TeamPage extends StatelessWidget {
                 name: 'Zhe Quan',
                 bio:
                     'A student that loves to code and wants to contribute back to society through the varse knowledge he gained.                                                                    ',
-                photo: 'assets/JJ.jpg'),
+                photo: 'assets/ZQ.jpg'),
             _buildCard(
                 name: 'Darren Ong',
                 bio:
@@ -97,12 +97,12 @@ class TeamPage extends StatelessWidget {
                 name: 'Jia Jun',
                 bio:
                     'Jia Jun is a incoming freshman from the Nanyang Technological University. His passion for coding started during his National Service days, where he learned and picked up numerous coding languages. ',
-                photo: 'assets/JJ.jpg'),
+                photo: 'assets/YJJ2.jpg'),
             _buildCard(
                 name: 'Ben',
                 bio:
                     'Ben is a Year 2 law student at the SMU School of Law. He is a self-taught full-stack developer and loves working on interesting and impactful projects.',
-                photo: 'assets/Ben.jpg'),
+                photo: 'assets/Ben2.jpg'),
           ],
         ),
       ),
