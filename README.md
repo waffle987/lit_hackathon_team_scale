@@ -7,4 +7,4 @@ To access law firm's side, click Log In and enter the credentials below.
 Demo credentials:
 
 Law Firm account: Email: user@email.com Password: 123456   
-Bank account identifier: scale
+Bank account identifier: smu_lit_hackathon_rocks
