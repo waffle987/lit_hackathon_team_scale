@@ -1,12 +1,10 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lit_hackathon_team_scale/controllers/bank_controller.dart';
-import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'dart:io';
 import 'package:universal_html/html.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class VarChangeController extends GetxController {
   static VarChangeController to = Get.find();

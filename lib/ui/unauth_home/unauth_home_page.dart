@@ -17,35 +17,19 @@ class UnAuthHomePage extends StatelessWidget {
             ? NavigationDrawer()
             : null,
         body: Container(
-          decoration: const BoxDecoration(color: Colors.white),
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                    Colors.grey.shade900,
-                    BlendMode.saturation,
+          decoration: const BoxDecoration(color: Colors.black),
+          child: CenteredView(
+            child: Column(
+              children: [
+                NavigationBar(),
+                Expanded(
+                  child: ScreenTypeLayout(
+                    mobile: HomeContentMobile(),
+                    desktop: HomeContentDesktop(),
                   ),
-                  child: Image.asset(
-                    'background3.jpg',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-              CenteredView(
-                child: Column(
-                  children: [
-                    NavigationBar(),
-                    Expanded(
-                      child: ScreenTypeLayout(
-                        mobile: HomeContentMobile(),
-                        desktop: HomeContentDesktop(),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
