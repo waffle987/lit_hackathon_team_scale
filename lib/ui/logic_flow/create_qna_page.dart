@@ -31,7 +31,7 @@ class QnAPage extends StatelessWidget {
               hintText: 'Write here...',
               textEditingController: c.quesTextController,
               textInputType: TextInputType.text),
-          SizedBox(height: _mediaQuery.size.height * 0.05),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
           Text("Assign Blocks",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
           SizedBox(height: _mediaQuery.size.height * 0.02),
@@ -100,7 +100,7 @@ class QnAPage extends StatelessWidget {
             buttonColour: _themeData.primaryColor,
             textColour: Colors.white,
           ),
-          SizedBox(height: _mediaQuery.size.height * 0.05),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
           Text(
             'Questions',
             style: TextStyle(
@@ -108,7 +108,7 @@ class QnAPage extends StatelessWidget {
               fontSize: 20.0,
             ),
           ),
-          SizedBox(height: _mediaQuery.size.height * 0.05),
+          SizedBox(height: _mediaQuery.size.height * 0.02),
           SizedBox(
             height: _mediaQuery.size.height / 2,
             child: (GetX<QnAController>(
