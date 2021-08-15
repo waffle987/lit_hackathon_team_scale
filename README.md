@@ -1,12 +1,9 @@
-# lit_hackathon_team_scale
-
-A new Flutter project.
-
 ## Scale.
 
-To log in to the various accounts on the mobile application, use the demo credentials below. Click on the profile page icon on the unauth home screen to navigate to the authentication page.
+To access bank's side, click on Banks in the top right corner and type in an identifier.
+To access law firm's side, click Log In and enter the credentials below.
 
-Demo account credentials:
+Demo credentials:
 
-User account: Email: user@email.com Password: 123456
-
+Law Firm account: Email: user@email.com Password: 123456
+Bank account identifier: smu_lit_hackathon_rocks
